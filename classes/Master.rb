@@ -18,8 +18,36 @@ class Master
     @player2 = Player.new(gets.chomp)
     @players << @player2
 
+    puts @player1.name
+    
     puts "Let's begin!"
 
     self.run_round
   end
+
+  def run_round
+    self.switch_player
+    puts "----- NEW TURN -----"
+
+    question = Question.new
+    puts "#{@active_player.name}:"
+    question.ask_question
+
+    guess = gets.chomp.to_i
+
+    if !question.correct?(guess)
+      @active_player.lose_life
+      puts "That's Wrong!"
+      puts "P1: #{@player1.lives}/3 vs P2: #{@player2.lives}/3"
+    else
+      puts "That's Correct!"
+      puts "P1: #{@player1.lives}/3 vs P2: #{@player2.lives}/3"
+    end
+
+  end
+
+  def switch_player
+    @active_player == @player1 ? @active_player = @player2 : @active_player = @player1
+  end
+
 end

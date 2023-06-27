@@ -1,5 +1,7 @@
 class Question
-  
+
+  attr_reader :answer
+
   def initialize()
     @numbers = 2.times.map{Random.new.rand(20)}
     @question = "What does #{@numbers[0]} plus #{@numbers[1]} equal?"
@@ -15,3 +17,4 @@ class Question
   end
 
 end
+

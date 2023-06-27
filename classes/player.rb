@@ -9,6 +9,11 @@ class Player
 
   def lose_life
     @lives -= 1
+    puts "hi"
   end
 
 end
+
+player1 = Player.new("Bastien")
+
+player1.lose_life
